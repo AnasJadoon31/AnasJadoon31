@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate a premium, professional GitHub Profile README.md in real-time with dynamic stats, custom tech badges, and spotlight sections.">
+  <title>GitHub Profile README Builder | Premium Creator & Visualizer</title>
+  
+  <!-- Font and Icon preloads & sheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-logo">
+      <svg class="logo-icon" viewBox="0 0 16 16" width="32" height="32" aria-hidden="true">
+        <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+      </svg>
+      <div class="logo-text">
+        <h1>GitHub Profile <span>README Builder</span></h1>
+        <p>Design a premium developer showcase in real-time</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="preset-control">
+        <label for="template-select">Archetype Preset:</label>
+        <select id="template-select" class="theme-select">
+          <option value="fullstack">🚀 Full Stack Developer</option>
+          <option value="frontend">✨ Frontend Specialist</option>
+          <option value="datascience">📊 Data Science & AI</option>
+          <option value="minimalist">🍃 Elegant Minimalist</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-container">
+    
+    <!-- Left Column: Form Controls (Editor) -->
+    <section class="editor-panel" aria-label="Profile Customization Panel">
+      
+      <!-- Panel Header -->
+      <div class="panel-header">
+        <h2 class="panel-title">Profile Configuration</h2>
+        <span class="badge">Live Sync Active</span>
+      </div>
+
+      <form id="profile-form" onsubmit="return false;">
+        
+        <!-- Accordion 1: Basic Info -->
+        <details class="accordion-group" open>
+          <summary class="accordion-header">
+            <span class="accordion-title-icon">👤</span>
+            <h3>Basic Info</h3>
+            <span class="accordion-chevron"></span>
+          </summary>
+          <div class="accordion-content">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-name">Full Name</label>
+                <input type="text" id="input-name" placeholder="e.g. Muhammad Anas" autocomplete="name">
+              </div>
+              <div class="form-field">
+                <label for="input-title">Professional Title</label>
+                <input type="text" id="input-title" placeholder="e.g. Full Stack Engineer | Python & React Dev">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="input-subtitle">Subtitle / Motto</label>
+              <input type="text" id="input-subtitle" placeholder="e.g. Building robust web apps and exploring decentralized systems">
+            </div>
+
+            <div class="form-field">
+              <label for="input-bio">Long Bio / Description</label>
+              <textarea id="input-bio" placeholder="Write a short summary about your passion, experience, and developer journey..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-current-work">Currently working on</label>
+                <input type="text" id="input-current-work" placeholder="e.g. KarobaarConnect platform">
+              </div>
+              <div class="form-field">
+                <label for="input-current-work-link">Project Link (Optional)</label>
+                <input type="url" id="input-current-work-link" placeholder="https://...">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-learning">Currently learning</label>
+                <input type="text" id="input-learning" placeholder="e.g. WebAssembly & Kubernetes">
+              </div>
+              <div class="form-field">
+                <label for="input-location">Location</label>
+                <input type="text" id="input-location" placeholder="e.g. Karachi, Pakistan">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-pronouns">Pronouns (Optional)</label>
+                <input type="text" id="input-pronouns" placeholder="e.g. he/him">
+              </div>
+              <div class="form-field">
+                <label for="input-collaboration">Available for Collaboration on</label>
+                <input type="text" id="input-collaboration" placeholder="e.g. Open-source Python/FastAPI libraries">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 2: Socials -->
+        <details class="accordion-group">
+          <summary class="accordion-header">
+            <span class="accordion-title-icon">🔗</span>
+            <h3>Socials & Contacts</h3>
+            <span class="accordion-chevron"></span>
+          </summary>
+          <div class="accordion-content">
+            <p class="accordion-note">Provide your usernames or URLs to generate stylized badges at the top of your profile.</p>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-github">GitHub Username *</label>
+                <input type="text" id="input-github" placeholder="e.g. AnasJadoon31" required>
+              </div>
+              <div class="form-field">
+                <label for="input-email">Email Address</label>
+                <input type="email" id="input-email" placeholder="e.g. mail@domain.com" autocomplete="email">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-linkedin">LinkedIn Username</label>
+                <input type="text" id="input-linkedin" placeholder="e.g. anas-linkedin">
+              </div>
+              <div class="form-field">
+                <label for="input-twitter">Twitter/X Username</label>
+                <input type="text" id="input-twitter" placeholder="e.g. anas_dev">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-portfolio">Portfolio / Personal Website</label>
+                <input type="url" id="input-portfolio" placeholder="https://anas-portfolio.dev">
+              </div>
+              <div class="form-field">
+                <label for="input-medium">Medium Username</label>
+                <input type="text" id="input-medium" placeholder="e.g. @anas-medium">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-devto">Dev.to Username</label>
+                <input type="text" id="input-devto" placeholder="e.g. anasdev">
+              </div>
+              <div class="form-field">
+                <label for="input-stackoverflow">StackOverflow ID</label>
+                <input type="text" id="input-stackoverflow" placeholder="e.g. 12345678">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 3: Skills & Tech Stack -->
+        <details class="accordion-group">
+          <summary class="accordion-header">
+            <span class="accordion-title-icon">🛠️</span>
+            <h3>Skills & Tech Stack</h3>
+            <span class="accordion-chevron"></span>
+          </summary>
+          <div class="accordion-content">
+            <p class="accordion-note">Select your core tech stack. The generator will create customized tech badges grouped beautifully.</p>
+            
+            <div class="skills-wrapper">
+              
+              <!-- Category: Languages -->
+              <div class="skills-category">
+                <h4>Languages</h4>
+                <div class="checkbox-grid" id="skills-languages">
+                  <!-- JS/TS -->
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="JavaScript" data-badge="javascript" data-color="F7DF1E" data-logo="javascript" data-logocolor="black">
+                    <span>JavaScript</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="TypeScript" data-badge="typescript" data-color="3178C6" data-logo="typescript" data-logocolor="white">
+                    <span>TypeScript</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Python" data-badge="python" data-color="3776AB" data-logo="python" data-logocolor="white">
+                    <span>Python</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Java" data-badge="java" data-color="ED8B00" data-logo="openjdk" data-logocolor="white">
+                    <span>Java</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Go" data-badge="go" data-color="00ADD8" data-logo="go" data-logocolor="white">
+                    <span>Go</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Rust" data-badge="rust" data-color="000000" data-logo="rust" data-logocolor="white">
+                    <span>Rust</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="C++" data-badge="c++" data-color="00599C" data-logo="cplusplus" data-logocolor="white">
+                    <span>C++</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="PHP" data-badge="php" data-color="777BB4" data-logo="php" data-logocolor="white">
+                    <span>PHP</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Swift" data-badge="swift" data-color="F05138" data-logo="swift" data-logocolor="white">
+                    <span>Swift</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Kotlin" data-badge="kotlin" data-color="7F52FF" data-logo="kotlin" data-logocolor="white">
+                    <span>Kotlin</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Category: Frontend -->
+              <div class="skills-category">
+                <h4>Frontend Frameworks & UI</h4>
+                <div class="checkbox-grid" id="skills-frontend">
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="React" data-badge="react" data-color="20232A" data-logo="react" data-logocolor="61DAFB">
+                    <span>React</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Vue" data-badge="vue.js" data-color="35495E" data-logo="vuedotjs" data-logocolor="4FC08D">
+                    <span>Vue.js</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Angular" data-badge="angular" data-color="DD0031" data-logo="angular" data-logocolor="white">
+                    <span>Angular</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Next.js" data-badge="next.js" data-color="000000" data-logo="nextdotjs" data-logocolor="white">
+                    <span>Next.js</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Svelte" data-badge="svelte" data-color="FF3E00" data-logo="svelte" data-logocolor="white">
+                    <span>Svelte</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="TailwindCSS" data-badge="tailwindcss" data-color="06B6D4" data-logo="tailwindcss" data-logocolor="white">
+                    <span>Tailwind CSS</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="HTML5" data-badge="html5" data-color="E34F26" data-logo="html5" data-logocolor="white">
+                    <span>HTML5</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="CSS3" data-badge="css3" data-color="1572B6" data-logo="css3" data-logocolor="white">
+                    <span>CSS3</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Sass" data-badge="sass" data-color="CC6699" data-logo="sass" data-logocolor="white">
+                    <span>Sass</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Category: Backend -->
+              <div class="skills-category">
+                <h4>Backend & APIs</h4>
+                <div class="checkbox-grid" id="skills-backend">
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Node.js" data-badge="node.js" data-color="339933" data-logo="nodedotjs" data-logocolor="white">
+                    <span>Node.js</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Express" data-badge="express.js" data-color="000000" data-logo="express" data-logocolor="white">
+                    <span>Express</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="FastAPI" data-badge="fastapi" data-color="009688" data-logo="fastapi" data-logocolor="white">
+                    <span>FastAPI</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Django" data-badge="django" data-color="092E20" data-logo="django" data-logocolor="white">
+                    <span>Django</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="NestJS" data-badge="nestjs" data-color="E0234E" data-logo="nestjs" data-logocolor="white">
+                    <span>NestJS</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Flask" data-badge="flask" data-color="000000" data-logo="flask" data-logocolor="white">
+                    <span>Flask</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Laravel" data-badge="laravel" data-color="FF2D20" data-logo="laravel" data-logocolor="white">
+                    <span>Laravel</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Spring Boot" data-badge="spring%20boot" data-color="6DB33F" data-logo="springboot" data-logocolor="white">
+                    <span>Spring Boot</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Category: Databases -->
+              <div class="skills-category">
+                <h4>Databases</h4>
+                <div class="checkbox-grid" id="skills-databases">
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="PostgreSQL" data-badge="postgresql" data-color="4169E1" data-logo="postgresql" data-logocolor="white">
+                    <span>PostgreSQL</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="MongoDB" data-badge="mongodb" data-color="47A248" data-logo="mongodb" data-logocolor="white">
+                    <span>MongoDB</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="MySQL" data-badge="mysql" data-color="4479A1" data-logo="mysql" data-logocolor="white">
+                    <span>MySQL</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Redis" data-badge="redis" data-color="DC382D" data-logo="redis" data-logocolor="white">
+                    <span>Redis</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Firebase" data-badge="firebase" data-color="FFCA28" data-logo="firebase" data-logocolor="black">
+                    <span>Firebase</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="SQLite" data-badge="sqlite" data-color="003B57" data-logo="sqlite" data-logocolor="white">
+                    <span>SQLite</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Supabase" data-badge="supabase" data-color="3ECF8E" data-logo="supabase" data-logocolor="black">
+                    <span>Supabase</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Category: DevOps & Infrastructure -->
+              <div class="skills-category">
+                <h4>DevOps, Cloud & Tools</h4>
+                <div class="checkbox-grid" id="skills-devops">
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Docker" data-badge="docker" data-color="2496ED" data-logo="docker" data-logocolor="white">
+                    <span>Docker</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Kubernetes" data-badge="kubernetes" data-color="326CE5" data-logo="kubernetes" data-logocolor="white">
+                    <span>Kubernetes</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="AWS" data-badge="aws" data-color="232F3E" data-logo="amazonwebservices" data-logocolor="white">
+                    <span>AWS</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Git" data-badge="git" data-color="F05032" data-logo="git" data-logocolor="white">
+                    <span>Git</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="GitHub Actions" data-badge="github%20actions" data-color="2088FF" data-logo="githubactions" data-logocolor="white">
+                    <span>GitHub Actions</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="GCP" data-badge="google%20cloud" data-color="4285F4" data-logo="googlecloud" data-logocolor="white">
+                    <span>Google Cloud</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Vercel" data-badge="vercel" data-color="000000" data-logo="vercel" data-logocolor="white">
+                    <span>Vercel</span>
+                  </label>
+                  <label class="skill-checkbox-label">
+                    <input type="checkbox" name="skills" value="Figma" data-badge="figma" data-color="F24E1E" data-logo="figma" data-logocolor="white">
+                    <span>Figma</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 4: GitHub Stats & Cards -->
+        <details class="accordion-group">
+          <summary class="accordion-header">
+            <span class="accordion-title-icon">📊</span>
+            <h3>GitHub Stats & Widgets</h3>
+            <span class="accordion-chevron"></span>
+          </summary>
+          <div class="accordion-content">
+            <p class="accordion-note">Check widgets to display in your profile and configure styling options. These cards load dynamically based on your GitHub username.</p>
+            
+            <!-- Self-Hosting Support Box -->
+            <div class="api-warning-box">
+              <h5>⚠️ Dynamic Cards Notice & Self-Hosting</h5>
+              <p>The public Vercel servers for GitHub Stats and Trophies are currently paused/rate-limited due to high traffic. If your cards load as plain text links on GitHub, we highly recommend deploying your own free server clone in 1 click (uses your own GitHub rate limits):</p>
+              <div class="deploy-buttons-row">
+                <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fanuraghazra%2Fgithub-readme-stats" target="_blank" class="deploy-btn vercel-btn">🚀 Deploy Stats to Vercel</a>
+                <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fryo-ma%2Fgithub-profile-trophy" target="_blank" class="deploy-btn vercel-btn">🏆 Deploy Trophies to Vercel</a>
+              </div>
+              <p class="api-help-text">After deploying, simply paste your custom Vercel app domains into the URL settings below!</p>
+            </div>
+
+            <div class="widget-field-group">
+              <label class="toggle-control">
+                <input type="checkbox" id="toggle-card-stats" checked>
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Include GitHub Stats Card</span>
+              </label>
+              
+              <label class="toggle-control">
+                <input type="checkbox" id="toggle-card-langs" checked>
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Include Top Languages Card</span>
+              </label>
+
+              <label class="toggle-control">
+                <input type="checkbox" id="toggle-card-streak" checked>
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Include Commits Streak Stats</span>
+              </label>
+
+              <label class="toggle-control">
+                <input type="checkbox" id="toggle-card-trophies">
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Include GitHub Trophies Banner</span>
+              </label>
+
+              <label class="toggle-control">
+                <input type="checkbox" id="toggle-visitor-badge">
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Include Visitor Count Badge</span>
+              </label>
+            </div>
+
+            <!-- Data Source Mode Toggle -->
+            <div class="border-top" style="margin-top: 1.25rem; padding-top: 1.25rem;">
+              <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: var(--accent-primary); margin-bottom: 0.5rem;">Analytics Data Source Mode</h4>
+              <label class="toggle-control">
+                <input type="checkbox" id="toggle-use-actions" checked>
+                <span class="toggle-slider"></span>
+                <span class="toggle-label" style="font-weight: 600; color: var(--text-primary);">Generate via GitHub Actions (Static SVGs)</span>
+              </label>
+              <p class="accordion-note" style="margin-top: 0.25rem;">
+                Statically compiles and commits SVG cards directly to your repository using actions. Avoids rate limits/downtime!
+              </p>
+            </div>
+
+            <!-- Custom Server URL Settings -->
+            <div class="custom-urls-section border-top">
+              <h4>Custom Host URL overrides (Optional)</h4>
+              <div class="form-field">
+                <label for="widget-stats-url">Stats & Langs API Base URL</label>
+                <input type="url" id="widget-stats-url" value="https://github-readme-stats.vercel.app">
+              </div>
+              <div class="form-row" style="margin-top: 0.75rem;">
+                <div class="form-field">
+                  <label for="widget-streak-url">Streak API Base URL</label>
+                  <input type="url" id="widget-streak-url" value="https://github-readme-streak-stats.herokuapp.com">
+                </div>
+                <div class="form-field">
+                  <label for="widget-trophies-url">Trophies API Base URL</label>
+                  <input type="url" id="widget-trophies-url" value="https://github-profile-trophy.vercel.app">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row border-top" style="margin-top: 1rem;">
+              <div class="form-field">
+                <label for="widget-theme">Stats Theme</label>
+                <select id="widget-theme" class="theme-select">
+                  <option value="tokyonight">Tokyo Night</option>
+                  <option value="radical">Radical</option>
+                  <option value="meridian">Meridian</option>
+                  <option value="github_dark" selected>GitHub Dark</option>
+                  <option value="dracula">Dracula</option>
+                  <option value="material-palenight">Material Palenight</option>
+                  <option value="vision-friendly-dark">Vision Friendly Dark</option>
+                  <option value="onedark">One Dark</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="visitor-badge-color">Visitor Badge Color</label>
+                <select id="visitor-badge-color" class="theme-select">
+                  <option value="blue" selected>Blue</option>
+                  <option value="brightgreen">Bright Green</option>
+                  <option value="orange">Orange</option>
+                  <option value="violet">Violet</option>
+                  <option value="ff69b4">Pink</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 5: Project Spotlight -->
+        <details class="accordion-group">
+          <summary class="accordion-header">
+            <span class="accordion-title-icon">⭐</span>
+            <h3>Project Spotlights</h3>
+            <span class="accordion-chevron"></span>
+          </summary>
+          <div class="accordion-content">
+            <p class="accordion-note">Feature your best projects. You can define up to 3 showcase cards.</p>
+            
+            <!-- Project 1 -->
+            <fieldset class="project-fieldset">
+              <legend>Project #1</legend>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="proj1-title">Project Title</label>
+                  <input type="text" id="proj1-title" placeholder="e.g. ProjectManager">
+                </div>
+                <div class="form-field">
+                  <label for="proj1-link">GitHub Repo Link</label>
+                  <input type="url" id="proj1-link" placeholder="https://github.com/...">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="proj1-desc">Short Description</label>
+                <input type="text" id="proj1-desc" placeholder="e.g. A lightweight web application to manage projects collaboratively.">
+              </div>
+              <div class="form-field">
+                <label for="proj1-tech">Tech Stack (comma separated)</label>
+                <input type="text" id="proj1-tech" placeholder="React, Node.js, Socket.io">
+              </div>
+            </fieldset>
+
+            <!-- Project 2 -->
+            <fieldset class="project-fieldset">
+              <legend>Project #2</legend>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="proj2-title">Project Title</label>
+                  <input type="text" id="proj2-title" placeholder="e.g. Mock-Nadra-API">
+                </div>
+                <div class="form-field">
+                  <label for="proj2-link">GitHub Repo Link</label>
+                  <input type="url" id="proj2-link" placeholder="https://github.com/...">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="proj2-desc">Short Description</label>
+                <input type="text" id="proj2-desc" placeholder="e.g. FastAPI mock service mapping identity validation.">
+              </div>
+              <div class="form-field">
+                <label for="proj2-tech">Tech Stack (comma separated)</label>
+                <input type="text" id="proj2-tech" placeholder="Python, FastAPI, SQLite">
+              </div>
+            </fieldset>
+
+            <!-- Project 3 -->
+            <fieldset class="project-fieldset">
+              <legend>Project #3 (Optional)</legend>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="proj3-title">Project Title</label>
+                  <input type="text" id="proj3-title" placeholder="e.g. KarobaarConnect">
+                </div>
+                <div class="form-field">
+                  <label for="proj3-link">GitHub Repo Link</label>
+                  <input type="url" id="proj3-link" placeholder="https://github.com/...">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="proj3-desc">Short Description</label>
+                <input type="text" id="proj3-desc" placeholder="e.g. Freelancing and e-commerce marketplace linking local providers.">
+              </div>
+              <div class="form-field">
+                <label for="proj3-tech">Tech Stack (comma separated)</label>
+                <input type="text" id="proj3-tech" placeholder="React, TailwindCSS, Django">
+              </div>
+            </fieldset>
+          </div>
+        </details>
+
+        <!-- Accordion 6: Footer & Addons -->
+        <details class="accordion-group">
+          <summary class="accordion-header">
+            <span class="accordion-title-icon">🎁</span>
+            <h3>Support & Add-ons</h3>
+            <span class="accordion-chevron"></span>
+          </summary>
+          <div class="accordion-content">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="input-buy-coffee">Buy Me A Coffee Username</label>
+                <input type="text" id="input-buy-coffee" placeholder="e.g. anasdev">
+              </div>
+              <div class="form-field">
+                <label for="input-custom-quote">Inspirational Quote / Footer Text</label>
+                <input type="text" id="input-custom-quote" placeholder="e.g. Talk is cheap. Show me the code.">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="input-quote-author">Quote Author</label>
+              <input type="text" id="input-quote-author" placeholder="Linus Torvalds">
+            </div>
+          </div>
+        </details>
+
+      </form>
+    </section>
+
+    <!-- Right Column: Visualizer & Live Output -->
+    <section class="preview-panel" aria-label="      <!-- Tab Controllers -->
+      <div class="tabs-header">
+        <div class="tabs-buttons" role="tablist">
+          <button id="tab-btn-visual" class="tab-button active" role="tab" aria-selected="true" aria-controls="tab-content-visual">
+            <svg class="tab-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M8 1.25a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V2a.75.75 0 0 1 .75-.75Zm3.824 1.116a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.06Zm-7.648 0a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 0 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.06 0ZM8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-5.5 4a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Zm1.22 3.824a.75.75 0 0 1 1.06 0l1.06 1.06a.75.75 0 0 1-1.06 1.062l-1.06-1.06a.75.75 0 0 1 0-1.062Zm7.648 0a.75.75 0 0 1 0 1.06l1.06 1.061a.75.75 0 1 1-1.06 1.06l-1.061-1.06a.75.75 0 0 1 0-1.06Z"></path>
+            </svg>
+            Live Preview
+          </button>
+          <button id="tab-btn-code" class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-code">
+            <svg class="tab-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L13.94 8l-3.72-3.72a.75.75 0 0 1 1.06-1.06ZM4.72 3.22a.75.75 0 0 1 1.06 1.06L2.06 8l3.72 3.72a.75.75 0 1 1-1.06 1.06L.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25Z"></path>
+            </svg>
+            Markdown Code
+          </button>
+          <button id="tab-btn-yaml" class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-yaml">
+            <svg class="tab-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor" d="M1.5 1.75v12.5c0 .414.336.75.75.75h11.5a.75.75 0 0 0 .75-.75V3.06a.75.75 0 0 0-.22-.53L12.47.28a.75.75 0 0 0-.53-.22H2.25a.75.75 0 0 0-.75.75ZM3 2.5h8v2.5H3V2.5Zm0 4h10v7H3v-7Z"></path>
+            </svg>
+            Actions Workflow
+          </button>
+        </div>
+
+        <div class="tabs-actions">
+          <button id="btn-copy" class="action-btn secondary-btn" aria-label="Copy Generated Markdown code to clipboard">
+            <span class="btn-icon">📋</span> Copy Markdown
+          </button>
+          <button id="btn-download" class="action-btn primary-btn" aria-label="Download generated README.md file">
+            <span class="btn-icon">💾</span> Download File
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="tabs-content">
+        
+        <!-- Visual Tab -->
+        <div id="tab-content-visual" class="tab-pane active" role="tabpanel" aria-labelledby="tab-btn-visual">
+          <div class="github-container">
+            <!-- Simulated GitHub README File Frame -->
+            <div class="github-readme-frame">
+              <div class="github-readme-header">
+                <div class="readme-info">
+                  <svg class="readme-book-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                    <path fill="currentColor" d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0 1 11.006 1h4.245a.75.75 0 0 1-.75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75V1.75Zm6.129 1.78c-.733-.518-1.603-.81-2.549-.81H1.5v8.5h2.08c1.233 0 2.333.58 3 1.501V3.53Zm2.742 9.19c.667-.92 1.767-1.5 3-1.5h2.08v-8.5h-2.08c-.946 0-1.816.292-2.55.81v9.19Z"></path>
+                  </svg>
+                  <span class="readme-filename">README.md</span>
+                </div>
+                <div class="readme-actions">
+                  <span class="simulated-edit-icon" title="Editing preview only">✏️</span>
+                </div>
+              </div>
+              
+              <!-- Inside Mock Box: HTML Output Rendering -->
+              <article class="markdown-body" id="rendered-output">
+                <!-- Javascript will populate this with standard styled HTML structure representing the README -->
+                <div class="welcome-box">
+                  <h3 class="welcome-text">Select an archetype preset or type in the fields to start building!</h3>
+                </div>
+              </article>
+            </div>
+            
+            <!-- Dynamic Stats Legend Info (How to publish instructions) -->
+            <div class="publishing-instructions">
+              <h4>💡 How to display this on GitHub:</h4>
+              <ol>
+                <li>Create a public repository named exactly matching your username (e.g. <code>anas/anas</code>).</li>
+                <li>Write or edit the <code>README.md</code> in that repository.</li>
+                <li>Copy the code from the <strong>Markdown Code</strong> tab above and paste it there!</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Tab -->
+        <div id="tab-content-code" class="tab-pane" role="tabpanel" aria-labelledby="tab-btn-code">
+          <div class="code-editor-container">
+            <pre class="code-pre"><code id="code-output" class="language-markdown"># Generating markdown...</code></pre>
+          </div>
+        </div>
+
+        <!-- Actions Workflow YAML Tab -->
+        <div id="tab-content-yaml" class="tab-pane" role="tabpanel" aria-labelledby="tab-btn-yaml">
+          <div class="publishing-instructions" style="margin-top: 0; margin-bottom: 1.25rem;">
+            <h4>🛠️ GitHub Actions Setup Instructions:</h4>
+            <ol>
+              <li>In your GitHub profile repository (e.g., <code>username/username</code>), create the folders <code>.github/workflows/</code> if they do not exist.</li>
+              <li>Create a new file named <code>grs.yml</code> in that directory.</li>
+              <li>Copy the YAML workflow configuration block below and paste it inside <code>grs.yml</code>.</li>
+              <li>Commit the file to your main branch. The workflow will run daily to compile your static SVG cards. You can also trigger it manually from your repository's <strong>Actions</strong> tab!</li>
+            </ol>
+          </div>
+          <div class="code-editor-container">
+            <pre class="code-pre"><code id="yaml-output" class="language-yaml"># Generating YAML workflow...</code></pre>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 GitHub Profile README Builder | Created with Antigravity AI Code Agent</p>
+  </footer>
+
+  <!-- App Main Javascript -->
+  <script src="index.js"></script>
+</body>
+</html>
