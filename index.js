@@ -315,7 +315,7 @@ function loadPreset(key) {
   elements.widgetTheme.value = preset.widgetTheme || "github_dark";
   elements.visitorColor.value = preset.visitorColor || "blue";
   elements.statsUrl.value = preset.statsUrl || "https://github-readme-stats.vercel.app";
-  elements.streakUrl.value = preset.streakUrl || "https://github-readme-streak-stats.herokuapp.com";
+  elements.streakUrl.value = preset.streakUrl || "https://streak-stats.demolab.com";
   elements.trophiesUrl.value = preset.trophiesUrl || "https://github-profile-trophy.vercel.app";
   elements.useActions.checked = preset.useActions !== undefined ? preset.useActions : true;
   

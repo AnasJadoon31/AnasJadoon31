@@ -58,12 +58,6 @@ I'm a passionate Full Stack Software Engineer focused on building robust archite
 
 <p align="center">
   <a href="https://github.com/AnasJadoon31">
-    <img src="https://github-profile-trophy.vercel.app/?username=AnasJadoon31&theme=github_dark" alt="AnasJadoon31's Trophies" />
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/AnasJadoon31">
     <img height="180em" src="./profile/stats.svg" alt="AnasJadoon31's Stats" />
   </a>
   <a href="https://github.com/AnasJadoon31">
@@ -73,7 +67,7 @@ I'm a passionate Full Stack Software Engineer focused on building robust archite
 
 <p align="center">
   <a href="https://github.com/AnasJadoon31">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=AnasJadoon31&theme=github_dark" alt="AnasJadoon31's Streak" />
+    <img src="https://streak-stats.demolab.com/?user=AnasJadoon31&theme=github_dark" alt="AnasJadoon31's Streak" />
   </a>
 </p>
 
