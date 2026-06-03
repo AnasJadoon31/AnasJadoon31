@@ -1,7 +1,7 @@
 <div align="center">
 
 # Muhammad Anas
-**Full Stack Software Engineer | Python & React Specialist | Cybersecurity Enthusiast**
+**Full Stack Software Engineer | Python & React Specialist | Application Security**
 
 *Architecting secure, scalable, and high-performance web systems.*
 
